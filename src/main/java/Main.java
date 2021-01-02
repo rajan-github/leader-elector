@@ -11,9 +11,10 @@ public class Main {
         try {
             leaderElection.connectToZookeeper();
             leaderElection.volunteerForLeadership();
-            leaderElection.electLeader();
+            leaderElection.reelectLeader();
             leaderElection.run();
             leaderElection.close();
+            leaderElection.watchTargetZnode();
             logger.info("Disconnected from zookeeper. Exiting the application.");
         } catch (IOException | InterruptedException | KeeperException e) {
             e.printStackTrace();
